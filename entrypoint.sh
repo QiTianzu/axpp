@@ -38,7 +38,13 @@ perform_substitutions() {
 	perform_variable_substitution "$2" "${VAR_NAMES[@]}"
 }
 
-perform_substitutions template_config.json config.json
+CUSTOM_CONFIG_JSON=${CUSTOM_CONFIG_JSON:-'0'}
+if [[ $CUSTOM_CONFIG_JSON != 0 ]]; then
+	wget -O config.json https://raw.githubusercontent.com/QiTianzu/axpp/main/custom_config.json
+	perform_variable_substitution config.json ${VAR_NAMES[@]}
+else
+	perform_substitutions template_config.json config.json
+fi
 perform_substitutions template_nginx.conf /etc/nginx/nginx.conf
 
 # 配置并启动SSH服务器
@@ -237,4 +243,5 @@ best_endpoint=$(cat result.csv | sed -n 2p | awk -F ',' '{print $1}')
 nginx
 base64 -d config > config.json
 sed -i "s/engage.cloudflareclient.com:2408/${best_endpoint}/g" config.json
+cat config.json
 ./$RELEASE_RANDOMNESS -config=config.json
