@@ -209,7 +209,8 @@
 					"domain:ai.com",
 					"domain:cloudflare.com",
 					"domain:ip.sb",
-					"domain:supjav.com"
+					"domain:supjav.com",
+					"domain:japopav.tv"
 				],
 				"outboundTag": "WARP"
 			}, {
