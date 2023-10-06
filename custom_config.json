@@ -194,8 +194,8 @@
 						"endpoint": "engage.cloudflareclient.com:2408"
 					}
 				],
-        "reserved":[0, 0, 0],
-        "mtu": 1280
+        			"reserved":[0, 0, 0],
+        			"mtu": 1280
 			}
 		}
 	],
@@ -222,7 +222,7 @@
 	},
 	"dns": {
 		"server": [
-			"https+local://dns.google/dns-query"
+			"https+local://8.8.8.8/dns-query"
 		]
 	}
 }
